@@ -1,7 +1,12 @@
 import streamlit as st
 import re
-from mistralai import Mistral
 from deep_translator import GoogleTranslator
+
+# Handles both mistralai v1.x+ and legacy fallback
+try:
+    from mistralai import Mistral
+except ImportError:
+    from mistralai.client import MistralClient as Mistral
 
 st.set_page_config(page_title="DeTalks: Immersion Tutor", page_icon="🇩🇪", layout="centered")
 
